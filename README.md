@@ -1,5 +1,7 @@
 # Free QA Skills for Claude Code
 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/qualitymax)
+
 Quick quality checks for any website. No signup, no API keys — just Claude Code + Playwright MCP.
 
 ## Install
