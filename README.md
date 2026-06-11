@@ -20,7 +20,7 @@ Then use in Claude Code: `/accessibility-check https://mysite.com`
 
 ## Skills
 
-23 diagnostic skills across four areas. All are read-only — they find problems and grade them, they don't change your code or site.
+27 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
 
 ### Web quality (Playwright MCP)
 
@@ -64,6 +64,15 @@ Then use in Claude Code: `/accessibility-check https://mysite.com`
 |-------|---------------|
 | **test-quality-review** | Assertion-free tests, weak assertions, skipped/only tests, over-mocking, missing edge cases |
 | **flaky-selector-scan** | Brittle UI locators (nth-child, absolute XPath, generated classes) → stable role/data-test suggestions |
+
+### Security & compliance (pure Claude Code — no MCP)
+
+| Skill | What It Checks |
+|-------|---------------|
+| **agentic-app-risk-review** | LLM/agent apps — prompt injection, unsafe tool calls, excessive agency, PII/secret leakage (OWASP-LLM-style) |
+| **iac-misconfig-scan** | Dockerfiles, Compose, Terraform, GitHub Actions — root containers, world-writable files, unpinned actions, hardcoded secrets |
+| **api-security-scan** | REST / OpenAPI — missing auth, broken object-level authorization (IDOR/BOLA), no rate limiting, verbose errors |
+| **license-compliance-scan** | Dependency licenses vs. your project's — copyleft conflicts, AGPL, unknown/unlicensed packages |
 
 ## Requirements
 

@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 // Validates every skill in skills/<name>/SKILL.md:
 //  - structure: frontmatter name/description, name === dir, title + Trigger + Workflow
-//  - the read-only security contract (see SECURITY.md): no destructive / exfiltration tokens
+//  - the read-only security contract (see SECURITY.md): no destructive / exfiltration
+//    commands in RUNNABLE shell code-blocks (```bash|sh|shell|zsh|console). Detection
+//    skills may name these patterns in prose/tables — only commands the agent would
+//    actually run are checked.
 // Zero dependencies. Exits non-zero on any violation. Run: node scripts/validate-skills.mjs
 
 import { readdirSync, readFileSync, existsSync, statSync } from 'fs';
@@ -23,6 +26,22 @@ const FORBIDDEN = [
 
 const errors = [];
 const fail = (skill, msg) => errors.push(`${skill}: ${msg}`);
+
+// Returns the command lines inside runnable shell fences (```bash|sh|shell|zsh|console),
+// skipping blank lines and comments. Detection patterns in prose/tables are ignored.
+function shellCommandLines(text) {
+  const out = [];
+  const fence = /```(bash|sh|shell|zsh|console)\r?\n([\s\S]*?)```/g;
+  let m;
+  while ((m = fence.exec(text))) {
+    for (const raw of m[2].split('\n')) {
+      const line = raw.trim();
+      if (!line || line.startsWith('#')) continue;
+      out.push(line);
+    }
+  }
+  return out.join('\n');
+}
 
 function parseFrontmatter(text) {
   const m = text.match(/^---\n([\s\S]*?)\n---/);
@@ -65,8 +84,9 @@ for (const dir of dirs) {
   if (!/^##\s+Trigger\b/m.test(text)) fail(dir, 'missing "## Trigger" section');
   if (!/^##\s+Workflow\b/m.test(text)) fail(dir, 'missing "## Workflow" section');
 
+  const runnable = shellCommandLines(text);
   for (const { re, label } of FORBIDDEN) {
-    if (re.test(text)) fail(dir, `read-only contract violation: contains "${label}"`);
+    if (re.test(runnable)) fail(dir, `read-only contract violation: runnable command contains "${label}"`);
   }
 }
 
