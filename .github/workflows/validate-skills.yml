@@ -1,0 +1,18 @@
+name: validate-skills
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+# Least privilege: this workflow only needs to read the repo.
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate skills (structure + read-only security contract)
+        run: node scripts/validate-skills.mjs
