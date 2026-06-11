@@ -1,5 +1,6 @@
 # Free QA Skills for Claude Code
 
+[![validate-skills](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/qualitymax)
 
 Quick quality checks for any website or codebase. No signup, no API keys — just Claude Code. The web skills use Playwright MCP (included with Claude Code); the code-review skills are pure Claude Code and need no MCP at all.
@@ -90,6 +91,14 @@ Connect Claude Code to QualityMax MCP for 85 tools: test generation, AI code rev
   }
 }
 ```
+
+## Security & contributing
+
+Every skill is **diagnostic and read-only** — it finds and grades problems, it never changes your code or site, and it doesn't exfiltrate data. This read-only contract is enforced in CI by [`scripts/validate-skills.mjs`](scripts/validate-skills.mjs).
+
+- Report a vulnerability: see [SECURITY.md](SECURITY.md).
+- Add or improve a skill: see [CONTRIBUTING.md](CONTRIBUTING.md) (run `node scripts/validate-skills.mjs` before opening a PR).
+- Be excellent to each other: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## License
 
