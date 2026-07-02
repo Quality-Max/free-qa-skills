@@ -1,0 +1,63 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Web Quality",
+      "description": "Browser-based QA skills for auditing user experience, accessibility, links, console errors, SEO, forms, localization, and HTTPS hygiene.",
+      "skills": [
+        "ui-ux-scan",
+        "accessibility-check",
+        "responsive-screenshots",
+        "broken-link-scan",
+        "console-error-scan",
+        "seo-check",
+        "security-headers-check",
+        "cookie-privacy-scan",
+        "form-validation-scan",
+        "i18n-rtl-audit",
+        "mixed-content-scan"
+      ]
+    },
+    {
+      "title": "Performance",
+      "description": "Web performance skills for measuring Core Web Vitals, page weight, third-party bloat, and cold-load bottlenecks.",
+      "skills": [
+        "core-web-vitals",
+        "page-weight-budget",
+        "third-party-bloat",
+        "cold-load-waterfall"
+      ]
+    },
+    {
+      "title": "Code Review",
+      "description": "Repository review skills for finding risky diffs, leaked secrets, dependency risk, dead code, complexity hotspots, and weak error handling.",
+      "skills": [
+        "diff-risk-review",
+        "secret-scan",
+        "dependency-audit",
+        "dead-code-scan",
+        "complexity-hotspots",
+        "error-handling-audit"
+      ]
+    },
+    {
+      "title": "Test Review",
+      "description": "Test-suite review skills for finding weak tests and brittle UI selectors before they fail in CI.",
+      "skills": [
+        "test-quality-review",
+        "flaky-selector-scan"
+      ]
+    },
+    {
+      "title": "Security & Compliance",
+      "description": "Security and compliance review skills for LLM apps, APIs, infrastructure-as-code, and dependency licenses.",
+      "skills": [
+        "agentic-app-risk-review",
+        "iac-misconfig-scan",
+        "api-security-scan",
+        "license-compliance-scan"
+      ]
+    }
+  ]
+}
