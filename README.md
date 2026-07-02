@@ -1,22 +1,38 @@
 # Free QA Skills for Claude Code
 
 [![validate-skills](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml)
+[![skills.sh](https://img.shields.io/badge/skills.sh-install%20skills-blue)](https://www.skills.sh/quality-max/free-qa-skills)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/qualitymax)
 
-Quick quality checks for any website or codebase. No signup, no API keys — just Claude Code. The web skills use Playwright MCP (included with Claude Code); the code-review skills are pure Claude Code and need no MCP at all.
+Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup, no API keys — just Claude Code. The web skills use Playwright MCP (included with Claude Code); the code-review skills are pure Claude Code and need no MCP at all.
+
+Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, dead code, API security, IaC misconfigurations, or LLM/agent app risk.
+
+**Directory page:** [skills.sh/quality-max/free-qa-skills](https://www.skills.sh/quality-max/free-qa-skills)
 
 ## Install
 
-```bash
-# Copy one skill
-cp -r skills/ui-ux-scan .claude/skills/
+Install from skills.sh with the official skills CLI. This records the install correctly for the public skills directory.
 
-# Or copy all
-git clone https://github.com/Quality-Max/free-qa-skills.git
-cp -r free-qa-skills/skills/* .claude/skills/
+```bash
+# Install all 27 QA skills
+npx skills add Quality-Max/free-qa-skills
+
+# Or install one focused skill
+npx skills add Quality-Max/free-qa-skills/accessibility-check
+npx skills add Quality-Max/free-qa-skills/core-web-vitals
+npx skills add Quality-Max/free-qa-skills/diff-risk-review
 ```
 
-Then use in Claude Code: `/accessibility-check https://mysite.com`
+Then use the skill in Claude Code:
+
+```bash
+/accessibility-check https://mysite.com
+/core-web-vitals https://mysite.com
+/diff-risk-review
+```
+
+Manual copying still works for local development, but `npx skills add` is the recommended install path because it keeps the skills visible on [skills.sh](https://www.skills.sh/).
 
 ## Skills
 
@@ -24,55 +40,55 @@ Then use in Claude Code: `/accessibility-check https://mysite.com`
 
 ### Web quality (Playwright MCP)
 
-| Skill | What It Checks |
-|-------|---------------|
-| **ui-ux-scan** | Touch targets, font consistency, spacing, empty states, visual hierarchy, UX anti-patterns |
-| **accessibility-check** | WCAG violations — alt text, headings, keyboard nav, ARIA, contrast |
-| **responsive-screenshots** | Screenshot at 5 viewports (mobile → ultrawide), flag layout breaks |
-| **broken-link-scan** | Find 404s, redirect chains, dead links |
-| **console-error-scan** | JS errors, failed network requests, deprecation warnings |
-| **seo-check** | Meta tags, Open Graph, structured data, image alts, heading hierarchy |
-| **security-headers-check** | CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy — graded A–F |
-| **cookie-privacy-scan** | Cookie inventory, missing Secure/HttpOnly/SameSite, third-party trackers, pre-consent tracking (GDPR) |
-| **form-validation-scan** | Required-field enforcement, format validation, error messaging, accepts-bad-input probing |
-| **i18n-rtl-audit** | Layout breaks under long translations, RTL rendering, hardcoded strings, missing lang/dir |
-| **mixed-content-scan** | HTTP scripts/styles/images/iframes and insecure form actions on HTTPS pages — active vs passive |
+| Skill | What It Checks | Install |
+|-------|---------------|---------|
+| **ui-ux-scan** | Touch targets, font consistency, spacing, empty states, visual hierarchy, UX anti-patterns | `npx skills add Quality-Max/free-qa-skills/ui-ux-scan` |
+| **accessibility-check** | WCAG violations — alt text, headings, keyboard nav, ARIA, contrast | `npx skills add Quality-Max/free-qa-skills/accessibility-check` |
+| **responsive-screenshots** | Screenshot at 5 viewports (mobile → ultrawide), flag layout breaks | `npx skills add Quality-Max/free-qa-skills/responsive-screenshots` |
+| **broken-link-scan** | Find 404s, redirect chains, dead links | `npx skills add Quality-Max/free-qa-skills/broken-link-scan` |
+| **console-error-scan** | JS errors, failed network requests, deprecation warnings | `npx skills add Quality-Max/free-qa-skills/console-error-scan` |
+| **seo-check** | Meta tags, Open Graph, structured data, image alts, heading hierarchy | `npx skills add Quality-Max/free-qa-skills/seo-check` |
+| **security-headers-check** | CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy — graded A–F | `npx skills add Quality-Max/free-qa-skills/security-headers-check` |
+| **cookie-privacy-scan** | Cookie inventory, missing Secure/HttpOnly/SameSite, third-party trackers, pre-consent tracking (GDPR) | `npx skills add Quality-Max/free-qa-skills/cookie-privacy-scan` |
+| **form-validation-scan** | Required-field enforcement, format validation, error messaging, accepts-bad-input probing | `npx skills add Quality-Max/free-qa-skills/form-validation-scan` |
+| **i18n-rtl-audit** | Layout breaks under long translations, RTL rendering, hardcoded strings, missing lang/dir | `npx skills add Quality-Max/free-qa-skills/i18n-rtl-audit` |
+| **mixed-content-scan** | HTTP scripts/styles/images/iframes and insecure form actions on HTTPS pages — active vs passive | `npx skills add Quality-Max/free-qa-skills/mixed-content-scan` |
 
 ### Performance (Playwright MCP)
 
-| Skill | What It Checks |
-|-------|---------------|
-| **core-web-vitals** | LCP, CLS, INP, TTFB, FCP via browser perf APIs — graded against Google thresholds |
-| **page-weight-budget** | Total bytes, request count, render-blocking JS/CSS, oversized/uncompressed images vs a budget |
-| **third-party-bloat** | Third-party scripts (analytics, tags, chat, ads) ranked by transfer size + main-thread cost |
-| **cold-load-waterfall** | Cold-cache load profile — TTFB, time-to-interactive, longest-pole requests, text waterfall |
+| Skill | What It Checks | Install |
+|-------|---------------|---------|
+| **core-web-vitals** | LCP, CLS, INP, TTFB, FCP via browser perf APIs — graded against Google thresholds | `npx skills add Quality-Max/free-qa-skills/core-web-vitals` |
+| **page-weight-budget** | Total bytes, request count, render-blocking JS/CSS, oversized/uncompressed images vs a budget | `npx skills add Quality-Max/free-qa-skills/page-weight-budget` |
+| **third-party-bloat** | Third-party scripts (analytics, tags, chat, ads) ranked by transfer size + main-thread cost | `npx skills add Quality-Max/free-qa-skills/third-party-bloat` |
+| **cold-load-waterfall** | Cold-cache load profile — TTFB, time-to-interactive, longest-pole requests, text waterfall | `npx skills add Quality-Max/free-qa-skills/cold-load-waterfall` |
 
 ### Code review (pure Claude Code — no MCP)
 
-| Skill | What It Checks |
-|-------|---------------|
-| **diff-risk-review** | Reviews `git diff` for correctness/security/performance — severity-ranked with file:line |
-| **secret-scan** | Hardcoded API keys, tokens, private keys, connection strings across common providers |
-| **dependency-audit** | Known-vulnerable, unpinned, abandoned, or badly outdated packages |
-| **dead-code-scan** | Unused exports, unreferenced files, unreachable branches, unused imports |
-| **complexity-hotspots** | Long functions, deep nesting, high cyclomatic complexity, god-files — ranked worst-first |
-| **error-handling-audit** | Swallowed exceptions, bare catches, floating promises, missing timeouts/retries |
+| Skill | What It Checks | Install |
+|-------|---------------|---------|
+| **diff-risk-review** | Reviews `git diff` for correctness/security/performance — severity-ranked with file:line | `npx skills add Quality-Max/free-qa-skills/diff-risk-review` |
+| **secret-scan** | Hardcoded API keys, tokens, private keys, connection strings across common providers | `npx skills add Quality-Max/free-qa-skills/secret-scan` |
+| **dependency-audit** | Known-vulnerable, unpinned, abandoned, or badly outdated packages | `npx skills add Quality-Max/free-qa-skills/dependency-audit` |
+| **dead-code-scan** | Unused exports, unreferenced files, unreachable branches, unused imports | `npx skills add Quality-Max/free-qa-skills/dead-code-scan` |
+| **complexity-hotspots** | Long functions, deep nesting, high cyclomatic complexity, god-files — ranked worst-first | `npx skills add Quality-Max/free-qa-skills/complexity-hotspots` |
+| **error-handling-audit** | Swallowed exceptions, bare catches, floating promises, missing timeouts/retries | `npx skills add Quality-Max/free-qa-skills/error-handling-audit` |
 
 ### Test review (pure Claude Code — no MCP)
 
-| Skill | What It Checks |
-|-------|---------------|
-| **test-quality-review** | Assertion-free tests, weak assertions, skipped/only tests, over-mocking, missing edge cases |
-| **flaky-selector-scan** | Brittle UI locators (nth-child, absolute XPath, generated classes) → stable role/data-test suggestions |
+| Skill | What It Checks | Install |
+|-------|---------------|---------|
+| **test-quality-review** | Assertion-free tests, weak assertions, skipped/only tests, over-mocking, missing edge cases | `npx skills add Quality-Max/free-qa-skills/test-quality-review` |
+| **flaky-selector-scan** | Brittle UI locators (nth-child, absolute XPath, generated classes) → stable role/data-test suggestions | `npx skills add Quality-Max/free-qa-skills/flaky-selector-scan` |
 
 ### Security & compliance (pure Claude Code — no MCP)
 
-| Skill | What It Checks |
-|-------|---------------|
-| **agentic-app-risk-review** | LLM/agent apps — prompt injection, unsafe tool calls, excessive agency, PII/secret leakage (OWASP-LLM-style) |
-| **iac-misconfig-scan** | Dockerfiles, Compose, Terraform, GitHub Actions — root containers, world-writable files, unpinned actions, hardcoded secrets |
-| **api-security-scan** | REST / OpenAPI — missing auth, broken object-level authorization (IDOR/BOLA), no rate limiting, verbose errors |
-| **license-compliance-scan** | Dependency licenses vs. your project's — copyleft conflicts, AGPL, unknown/unlicensed packages |
+| Skill | What It Checks | Install |
+|-------|---------------|---------|
+| **agentic-app-risk-review** | LLM/agent apps — prompt injection, unsafe tool calls, excessive agency, PII/secret leakage (OWASP-LLM-style) | `npx skills add Quality-Max/free-qa-skills/agentic-app-risk-review` |
+| **iac-misconfig-scan** | Dockerfiles, Compose, Terraform, GitHub Actions — root containers, world-writable files, unpinned actions, hardcoded secrets | `npx skills add Quality-Max/free-qa-skills/iac-misconfig-scan` |
+| **api-security-scan** | REST / OpenAPI — missing auth, broken object-level authorization (IDOR/BOLA), no rate limiting, verbose errors | `npx skills add Quality-Max/free-qa-skills/api-security-scan` |
+| **license-compliance-scan** | Dependency licenses vs. your project's — copyleft conflicts, AGPL, unknown/unlicensed packages | `npx skills add Quality-Max/free-qa-skills/license-compliance-scan` |
 
 ## Requirements
 
