@@ -1,10 +1,10 @@
-# Free QA Skills for Claude Code
+# Free QA Skills for AI Coding Agents
 
 [![validate-skills](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml)
 [![skills.sh](https://img.shields.io/badge/skills.sh-install%20skills-blue)](https://www.skills.sh/quality-max/free-qa-skills)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/qualitymax)
 
-Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup, no API keys — just Claude Code. The web skills use Playwright MCP (included with Claude Code); the code-review skills are pure Claude Code and need no MCP at all.
+Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup or API keys required. The web skills use browser automation such as Playwright MCP; the code-review skills work directly with local repository files and need no MCP at all.
 
 Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, dead code, API security, IaC misconfigurations, or LLM/agent app risk.
 
@@ -24,7 +24,7 @@ npx skills add Quality-Max/free-qa-skills/core-web-vitals
 npx skills add Quality-Max/free-qa-skills/diff-risk-review
 ```
 
-Then use the skill in Claude Code:
+Then use the skill in your coding agent:
 
 ```bash
 /accessibility-check https://mysite.com
@@ -38,7 +38,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 27 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
 
-### Web quality (Playwright MCP)
+### Web quality (browser automation)
 
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
@@ -54,7 +54,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 | **i18n-rtl-audit** | Layout breaks under long translations, RTL rendering, hardcoded strings, missing lang/dir | `npx skills add Quality-Max/free-qa-skills/i18n-rtl-audit` |
 | **mixed-content-scan** | HTTP scripts/styles/images/iframes and insecure form actions on HTTPS pages — active vs passive | `npx skills add Quality-Max/free-qa-skills/mixed-content-scan` |
 
-### Performance (Playwright MCP)
+### Performance (browser automation)
 
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
@@ -63,7 +63,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 | **third-party-bloat** | Third-party scripts (analytics, tags, chat, ads) ranked by transfer size + main-thread cost | `npx skills add Quality-Max/free-qa-skills/third-party-bloat` |
 | **cold-load-waterfall** | Cold-cache load profile — TTFB, time-to-interactive, longest-pole requests, text waterfall | `npx skills add Quality-Max/free-qa-skills/cold-load-waterfall` |
 
-### Code review (pure Claude Code — no MCP)
+### Code review (local repository — no MCP)
 
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
@@ -74,14 +74,14 @@ Manual copying still works for local development, but `npx skills add` is the re
 | **complexity-hotspots** | Long functions, deep nesting, high cyclomatic complexity, god-files — ranked worst-first | `npx skills add Quality-Max/free-qa-skills/complexity-hotspots` |
 | **error-handling-audit** | Swallowed exceptions, bare catches, floating promises, missing timeouts/retries | `npx skills add Quality-Max/free-qa-skills/error-handling-audit` |
 
-### Test review (pure Claude Code — no MCP)
+### Test review (local repository — no MCP)
 
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
 | **test-quality-review** | Assertion-free tests, weak assertions, skipped/only tests, over-mocking, missing edge cases | `npx skills add Quality-Max/free-qa-skills/test-quality-review` |
 | **flaky-selector-scan** | Brittle UI locators (nth-child, absolute XPath, generated classes) → stable role/data-test suggestions | `npx skills add Quality-Max/free-qa-skills/flaky-selector-scan` |
 
-### Security & compliance (pure Claude Code — no MCP)
+### Security & compliance (local repository — no MCP)
 
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
@@ -92,30 +92,20 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 ## Requirements
 
-- [Claude Code](https://claude.ai/claude-code)
-- Playwright MCP (included with Claude Code) — only for the web-quality and performance skills. The code-review and test-review skills run on pure Claude Code with no MCP.
+- An AI coding agent supported by the [skills CLI](https://skills.sh/)
+- A browser-automation integration such as Playwright MCP — only for the web-quality and performance skills. The repository-review skills need no MCP.
 
 ## How It Works
 
-Web skills use Playwright MCP to navigate your site, run checks in the browser, and produce a graded report. Code-review skills read your repo and `git diff` directly. All are diagnostic only — they find problems, they don't fix them.
+Web skills use the agent's browser-automation integration to navigate your site, run checks in the browser, and produce a graded report. Code-review skills read your repo and `git diff` directly. All are diagnostic only — they find problems, they don't fix them.
 
 ## Want More?
 
 These skills find issues. [QualityMax](https://qualitymax.io) fixes them — AI-generated test automation, self-healing scripts, CI/CD quality gates.
 
-Connect Claude Code to QualityMax MCP for 85 tools: test generation, AI code review, BOLA scanning, k6 load testing, and breach triage — all from your terminal.
+Connect your agent to QualityMax MCP for 67 OAuth-protected tools: test generation, AI code review, BOLA scanning, k6 load testing, and breach triage.
 
-```json
-{
-  "mcpServers": {
-    "qualitymax": {
-      "type": "http",
-      "url": "https://app.qualitymax.io/api/mcp",
-      "headers": { "Authorization": "Bearer qm-your-api-token" }
-    }
-  }
-}
-```
+Open [QualityMax MCP on Smithery](https://smithery.ai/servers/qualitymax/qualitymax-mcp), connect it to your agent, and complete the hosted OAuth authorization flow. No API token needs to be copied into client configuration.
 
 ## Security & contributing
 
