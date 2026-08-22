@@ -1,6 +1,7 @@
 # Free QA Skills for AI Coding Agents
 
 [![validate-skills](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml)
+[![GitHub Agent Skills](https://img.shields.io/badge/GitHub-Agent%20Skills-181717?logo=github)](https://github.com/Quality-Max/free-qa-skills/releases/latest)
 [![skills.sh](https://img.shields.io/badge/skills.sh-install%20skills-blue)](https://www.skills.sh/quality-max/free-qa-skills)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/qualitymax)
 
@@ -11,6 +12,24 @@ Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibil
 **Directory page:** [skills.sh/quality-max/free-qa-skills](https://www.skills.sh/quality-max/free-qa-skills)
 
 ## Install
+
+### GitHub Agent Skills
+
+Install all 27 skills with the GitHub CLI:
+
+```bash
+gh skill install Quality-Max/free-qa-skills
+```
+
+Install one skill and pin it to the current release:
+
+```bash
+gh skill install Quality-Max/free-qa-skills accessibility-check --pin v1.0.0
+```
+
+See the [latest GitHub Agent Skills release](https://github.com/Quality-Max/free-qa-skills/releases/latest).
+
+### skills.sh
 
 Install from skills.sh with the official skills CLI. This records the install correctly for the public skills directory.
 
