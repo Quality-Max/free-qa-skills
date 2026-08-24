@@ -2,7 +2,7 @@
 
 [![validate-skills](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml)
 [![GitHub Agent Skills](https://img.shields.io/badge/GitHub-Agent%20Skills-181717?logo=github)](https://github.com/Quality-Max/free-qa-skills/releases/latest)
-[![skills.sh](https://img.shields.io/badge/skills.sh-install%20skills-blue)](https://www.skills.sh/quality-max/free-qa-skills)
+[![skills.sh installs](https://skills.sh/b/quality-max/free-qa-skills)](https://www.skills.sh/quality-max/free-qa-skills)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/qualitymax)
 
 Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup or API keys required. The web skills use browser automation such as Playwright MCP; the code-review skills work directly with local repository files and need no MCP at all.
