@@ -9,7 +9,7 @@ Quick QA, accessibility, performance, security, SEO, privacy, and test-review sk
 
 Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, dead code, API security, IaC misconfigurations, or LLM/agent app risk.
 
-**Directory page:** [skills.sh/quality-max/free-qa-skills](https://www.skills.sh/quality-max/free-qa-skills)
+**Skill directories:** [skills.sh](https://www.skills.sh/quality-max/free-qa-skills), [Smithery](https://smithery.ai/console/skills), and [SkillMD](https://skillmd.com/u/ruslan-strazhnyk).
 
 ## Install
 
