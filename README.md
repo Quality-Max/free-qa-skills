@@ -1,5 +1,9 @@
 # Free QA Skills for AI Coding Agents
 
+[Tools and licenses](https://docs.qualitymax.io/free-and-open-source/) · [QualityMax ecosystem](https://github.com/Quality-Max/qualitymax)
+
+No QualityMax account is required. Your chosen coding agent and any external tools determine model costs and data handling.
+
 [![validate-skills](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/Quality-Max/free-qa-skills/actions/workflows/validate-skills.yml)
 [![GitHub Agent Skills](https://img.shields.io/badge/GitHub-Agent%20Skills-181717?logo=github)](https://github.com/Quality-Max/free-qa-skills/releases/latest)
 [![skills.sh installs](https://skills.sh/b/quality-max/free-qa-skills)](https://www.skills.sh/quality-max/free-qa-skills)
