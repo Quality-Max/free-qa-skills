@@ -102,7 +102,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
 | **test-quality-review** | Assertion-free tests, weak assertions, skipped/only tests, over-mocking, missing edge cases | `npx skills add Quality-Max/free-qa-skills/test-quality-review` |
-| **script-quality-review** | Generated tests whose green run is a skip, a status-only 4xx, a missed case, an unknown route, or a write with no undo | `npx skills add Quality-Max/free-qa-skills/script-quality-review` |
+| **script-quality-review** | Generated tests whose green run is a skip, a status-only 4xx, a missed case, an unknown route or selector, or a write with no undo | `npx skills add Quality-Max/free-qa-skills/script-quality-review` |
 | **flaky-selector-scan** | Brittle UI locators (nth-child, absolute XPath, generated classes) → stable role/data-test suggestions | `npx skills add Quality-Max/free-qa-skills/flaky-selector-scan` |
 
 ### Security & compliance (local repository — no MCP)
