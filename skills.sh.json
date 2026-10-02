@@ -46,6 +46,7 @@
       "description": "Test-suite review skills for finding weak tests and brittle UI selectors before they fail in CI.",
       "skills": [
         "test-quality-review",
+        "script-quality-review",
         "flaky-selector-scan"
       ]
     },

@@ -11,7 +11,7 @@ No QualityMax account is required. Your chosen coding agent and any external too
 
 Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup or API keys required. The web skills use browser automation such as Playwright MCP; the code-review skills work directly with local repository files and need no MCP at all.
 
-Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, dead code, API security, IaC misconfigurations, or LLM/agent app risk.
+Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, IaC misconfigurations, or LLM/agent app risk.
 
 **Skill directories:** [skills.sh](https://www.skills.sh/quality-max/free-qa-skills), [Smithery](https://smithery.ai/console/skills), and [SkillMD](https://skillmd.com/u/ruslan-strazhnyk).
 
@@ -19,7 +19,7 @@ Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibil
 
 ### GitHub Agent Skills
 
-Install all 27 skills with the GitHub CLI:
+Install all 28 skills with the GitHub CLI:
 
 ```bash
 gh skill install Quality-Max/free-qa-skills
@@ -38,7 +38,7 @@ See the [latest GitHub Agent Skills release](https://github.com/Quality-Max/free
 Install from skills.sh with the official skills CLI. This records the install correctly for the public skills directory.
 
 ```bash
-# Install all 27 QA skills
+# Install all 28 QA skills
 npx skills add Quality-Max/free-qa-skills
 
 # Or install one focused skill
@@ -59,7 +59,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 ## Skills
 
-27 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
+28 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
 
 ### Web quality (browser automation)
 
@@ -102,6 +102,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
 | **test-quality-review** | Assertion-free tests, weak assertions, skipped/only tests, over-mocking, missing edge cases | `npx skills add Quality-Max/free-qa-skills/test-quality-review` |
+| **script-quality-review** | Generated tests whose green run is a skip, a status-only 4xx, a missed case, an unknown route or selector, or a write with no undo | `npx skills add Quality-Max/free-qa-skills/script-quality-review` |
 | **flaky-selector-scan** | Brittle UI locators (nth-child, absolute XPath, generated classes) → stable role/data-test suggestions | `npx skills add Quality-Max/free-qa-skills/flaky-selector-scan` |
 
 ### Security & compliance (local repository — no MCP)
