@@ -33,9 +33,11 @@ use the conversation language and return Markdown in the conversation.
 
 - **Incremental:** when asked about a branch, PR, or diff. Identify the actual
   base from local repository context; compare the merge base with HEAD using
-  `git diff <base>...HEAD`. For uncommitted work, include staged and unstaged
-  changes separately. Begin with filenames and change statistics, then inspect
-  relevant hunks with secrets redacted before they enter output. Read unchanged
+  `git diff <base>...HEAD`. For uncommitted work, inspect staged and unstaged
+  changes separately, and inventory and inspect non-ignored untracked files within
+  scope, applying the discovery exclusions below. Begin with filenames and change
+  statistics, then inspect relevant hunks and untracked content with secrets
+  redacted before they enter output. Read unchanged
   callers, consumers, configuration, and tests when the change affects their
   contract. Distinguish introduced defects from pre-existing ones.
 - **Focused:** when a subsystem or dimension is named. Inspect its entry points,
