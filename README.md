@@ -11,7 +11,7 @@ No QualityMax account is required. Your chosen coding agent and any external too
 
 Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup or API keys required. The web skills use browser automation such as Playwright MCP; the code-review skills work directly with local repository files and need no MCP at all.
 
-Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, IaC misconfigurations, or LLM/agent app risk.
+Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, IaC misconfigurations, LLM/agent app risk, or evidence-backed repository audits.
 
 **Skill directories:** [skills.sh](https://www.skills.sh/quality-max/free-qa-skills), [Smithery](https://smithery.ai/console/skills), and [SkillMD](https://skillmd.com/u/ruslan-strazhnyk).
 
@@ -19,7 +19,7 @@ Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibil
 
 ### GitHub Agent Skills
 
-Install all 28 skills with the GitHub CLI:
+Install all 29 skills with the GitHub CLI:
 
 ```bash
 gh skill install Quality-Max/free-qa-skills
@@ -38,7 +38,7 @@ See the [latest GitHub Agent Skills release](https://github.com/Quality-Max/free
 Install from skills.sh with the official skills CLI. This records the install correctly for the public skills directory.
 
 ```bash
-# Install all 28 QA skills
+# Install all 29 QA skills
 npx skills add Quality-Max/free-qa-skills
 
 # Or install one focused skill
@@ -59,7 +59,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 ## Skills
 
-28 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
+29 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
 
 ### Web quality (browser automation)
 
@@ -90,6 +90,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
+| **evidence-code-audit** | Broad, focused, or incremental audit with traced failure paths, severity/confidence, coverage limits, and fix priorities | `npx skills add Quality-Max/free-qa-skills/evidence-code-audit` |
 | **diff-risk-review** | Reviews `git diff` for correctness/security/performance — severity-ranked with file:line | `npx skills add Quality-Max/free-qa-skills/diff-risk-review` |
 | **secret-scan** | Hardcoded API keys, tokens, private keys, connection strings across common providers | `npx skills add Quality-Max/free-qa-skills/secret-scan` |
 | **dependency-audit** | Known-vulnerable, unpinned, abandoned, or badly outdated packages | `npx skills add Quality-Max/free-qa-skills/dependency-audit` |
@@ -141,4 +142,6 @@ Every skill is **diagnostic and read-only** — it finds and grades problems, it
 
 ## License
 
-Apache 2.0
+Apache 2.0, except the adapted [evidence-code-audit](skills/evidence-code-audit/SKILL.md)
+files, which retain their [upstream MIT license](skills/evidence-code-audit/LICENSE).
+See the skill's [provenance](skills/evidence-code-audit/references/dimensions.md#provenance).
