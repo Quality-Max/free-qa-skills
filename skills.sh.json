@@ -31,8 +31,9 @@
     },
     {
       "title": "Code Review",
-      "description": "Repository review skills for finding risky diffs, leaked secrets, dependency risk, dead code, complexity hotspots, and weak error handling.",
+      "description": "Repository review skills for evidence-backed audits, risky diffs, leaked secrets, dependency risk, dead code, complexity hotspots, and weak error handling.",
       "skills": [
+        "evidence-code-audit",
         "diff-risk-review",
         "secret-scan",
         "dependency-audit",
