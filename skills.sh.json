@@ -53,10 +53,12 @@
     },
     {
       "title": "Security & Compliance",
-      "description": "A unified read-only security pack for repositories and websites, advisory applicability, LLM apps, APIs, infrastructure-as-code, and dependency licenses.",
+      "description": "A unified read-only security pack for repositories and websites, current exploited vulnerabilities, Railway exposure, advisory applicability, LLM apps, APIs, infrastructure-as-code, and dependency licenses.",
       "skills": [
         "security-audit",
         "security-advisory-triage",
+        "exploited-vulnerability-watch",
+        "railway-exposure-audit",
         "agentic-app-risk-review",
         "iac-misconfig-scan",
         "api-security-scan",

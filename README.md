@@ -11,7 +11,7 @@ No QualityMax account is required. Your chosen coding agent and any external too
 
 Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup or API keys required. The web skills use browser automation such as Playwright MCP; the code-review skills work directly with local repository files and need no MCP at all.
 
-Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, IaC misconfigurations, LLM/agent app risk, advisory triage, or a unified evidence-backed security audit.
+Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, multi-ecosystem dependency and runtime risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, Railway exposure, IaC misconfigurations, LLM/agent app risk, exploited-CVE monitoring, advisory triage, or a unified evidence-backed security audit.
 
 **Skill directories:** [skills.sh](https://www.skills.sh/quality-max/free-qa-skills), [Smithery](https://smithery.ai/console/skills), and [SkillMD](https://skillmd.com/u/ruslan-strazhnyk).
 
@@ -19,7 +19,7 @@ Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibil
 
 ### GitHub Agent Skills
 
-Install all 31 skills with the GitHub CLI:
+Install all 33 skills with the GitHub CLI:
 
 ```bash
 gh skill install Quality-Max/free-qa-skills
@@ -38,7 +38,7 @@ See the [latest GitHub Agent Skills release](https://github.com/Quality-Max/free
 Install from skills.sh with the official skills CLI. This records the install correctly for the public skills directory.
 
 ```bash
-# Install all 31 QA skills
+# Install all 33 QA skills
 npx skills add Quality-Max/free-qa-skills
 
 # Or install one focused skill
@@ -46,6 +46,7 @@ npx skills add Quality-Max/free-qa-skills/accessibility-check
 npx skills add Quality-Max/free-qa-skills/core-web-vitals
 npx skills add Quality-Max/free-qa-skills/diff-risk-review
 npx skills add Quality-Max/free-qa-skills/security-audit
+npx skills add Quality-Max/free-qa-skills/exploited-vulnerability-watch
 ```
 
 Then use the skill in your coding agent:
@@ -55,13 +56,14 @@ Then use the skill in your coding agent:
 /core-web-vitals https://mysite.com
 /diff-risk-review
 /security-audit
+/exploited-vulnerability-watch
 ```
 
 Manual copying still works for local development, but `npx skills add` is the recommended install path because it keeps the skills visible on [skills.sh](https://www.skills.sh/).
 
 ## Skills
 
-31 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
+33 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
 
 ### Web quality (browser automation)
 
@@ -95,7 +97,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 | **evidence-code-audit** | Broad, focused, or incremental audit with traced failure paths, severity/confidence, coverage limits, and fix priorities | `npx skills add Quality-Max/free-qa-skills/evidence-code-audit` |
 | **diff-risk-review** | Reviews `git diff` for correctness/security/performance — severity-ranked with file:line | `npx skills add Quality-Max/free-qa-skills/diff-risk-review` |
 | **secret-scan** | Hardcoded API keys, tokens, private keys, connection strings across common providers | `npx skills add Quality-Max/free-qa-skills/secret-scan` |
-| **dependency-audit** | Known-vulnerable, unpinned, abandoned, or badly outdated packages | `npx skills add Quality-Max/free-qa-skills/dependency-audit` |
+| **dependency-audit** | Vulnerable or unsupported packages and runtimes, stale locks, unsafe ranges, and supply-chain risk across Node.js, Python, PHP, Java, Go, Rust, and Ruby | `npx skills add Quality-Max/free-qa-skills/dependency-audit` |
 | **dead-code-scan** | Unused exports, unreferenced files, unreachable branches, unused imports | `npx skills add Quality-Max/free-qa-skills/dead-code-scan` |
 | **complexity-hotspots** | Long functions, deep nesting, high cyclomatic complexity, god-files — ranked worst-first | `npx skills add Quality-Max/free-qa-skills/complexity-hotspots` |
 | **error-handling-audit** | Swallowed exceptions, bare catches, floating promises, missing timeouts/retries | `npx skills add Quality-Max/free-qa-skills/error-handling-audit` |
@@ -112,8 +114,10 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
-| **security-audit** | Unified quick, repository, web, full, or advisory security review with deduplicated evidence and explicit coverage gaps | `npx skills add Quality-Max/free-qa-skills/security-audit` |
+| **security-audit** | Unified quick, repository, web, full, advisory, threat-watch, or Railway review with deduplicated evidence and explicit coverage gaps | `npx skills add Quality-Max/free-qa-skills/security-audit` |
 | **security-advisory-triage** | CVEs and security claims — authoritative affected/fixed versions, real asset identity, prerequisites, exposure vs. compromise | `npx skills add Quality-Max/free-qa-skills/security-advisory-triage` |
+| **exploited-vulnerability-watch** | Newly exploited vulnerabilities — dated CISA KEV/vendor evidence correlated to the reviewed technology inventory | `npx skills add Quality-Max/free-qa-skills/exploited-vulnerability-watch` |
+| **railway-exposure-audit** | Railway public domains, TCP proxies, private networking, service bindings, and application trust boundaries | `npx skills add Quality-Max/free-qa-skills/railway-exposure-audit` |
 | **agentic-app-risk-review** | LLM/agent apps — prompt injection, unsafe tool calls, excessive agency, PII/secret leakage (OWASP-LLM-style) | `npx skills add Quality-Max/free-qa-skills/agentic-app-risk-review` |
 | **iac-misconfig-scan** | Dockerfiles, Compose, Terraform, GitHub Actions — root containers, world-writable files, unpinned actions, hardcoded secrets | `npx skills add Quality-Max/free-qa-skills/iac-misconfig-scan` |
 | **api-security-scan** | REST / OpenAPI — missing auth, broken object-level authorization (IDOR/BOLA), no rate limiting, verbose errors | `npx skills add Quality-Max/free-qa-skills/api-security-scan` |
@@ -121,14 +125,14 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 ## Security Pack
 
-Start with `/security-audit` when you want one security report or are unsure which focused check applies. It selects a quick, repository, web, full, or advisory profile and coordinates the relevant focused skills without changing the target.
+Start with `/security-audit` when you want one security report or are unsure which focused check applies. It selects a quick, repository, web, full, advisory, threat-watch, or Railway profile and coordinates the relevant focused skills without changing the target.
 
-The pack covers repository failure paths, changed code, secrets, dependencies, APIs, infrastructure-as-code, agentic applications, HTTP headers, mixed content, browser privacy, and advisory applicability. `/security-advisory-triage` handles CVEs and security posts separately: it verifies the exact installed version and documented prerequisites against primary sources before calling an asset vulnerable, and keeps exposure distinct from evidence of compromise.
+The pack covers repository failure paths, changed code, secrets, multi-ecosystem dependencies and runtimes, APIs, infrastructure-as-code, Railway networking, agentic applications, HTTP headers, mixed content, browser privacy, advisory applicability, and current exploited-vulnerability monitoring. `/security-advisory-triage` verifies a specific CVE or security post; `/exploited-vulnerability-watch` starts from dated CISA KEV and vendor evidence and correlates new threats to the reviewed inventory; `/railway-exposure-audit` maps domains, TCP proxies, private paths, and application controls without dumping provider configuration. Each keeps exposure distinct from evidence of compromise.
 
 ## Requirements
 
 - An AI coding agent supported by the [skills CLI](https://skills.sh/)
-- A browser-automation integration such as Playwright MCP — only for web and performance checks. Advisory triage needs current web access to public authoritative sources; repository-only checks need no MCP.
+- A browser-automation integration such as Playwright MCP — only for web and performance checks. Advisory triage, exploited-vulnerability monitoring, dependency freshness, and lifecycle checks need current web access to public authoritative sources; repository-only checks need no MCP.
 
 ## How It Works
 
