@@ -23,9 +23,12 @@ Catch a leaked credential before it lands in git history. No signup required.
 ## Workflow
 
 1. Choose scope:
-   - Pre-commit (default): enumerate changed and staged file names without printing their contents — only what's about to land.
+   - Pre-commit (default): enumerate staged, unstaged, and untracked file names separately without printing their contents. Treat the staged index and working tree as distinct sources: a path can contain different content in each.
    - Full tree: scan tracked files (skip `.git`, `node_modules`, lockfiles, `dist/`, binaries).
-2. Scan candidate files with a local tool that redacts each match **before** it reaches command output or agent context. Never run a raw diff, search, or file read that prints matching values. Report only `file:line`, the secret type, and at most the first 4 non-sensitive identifying characters. If no source-redacting scanner is available, report the content scan as **not assessed** instead of exposing candidate values.
+2. Scan each source with a local tool that redacts every match **before** it reaches command output or agent context:
+   - For staged paths, scan the index blob directly rather than the on-disk file. Do not substitute the working-tree version: content removed locally can still remain staged for commit.
+   - For unstaged and untracked paths, scan the on-disk file independently. Do not print either version while comparing them.
+   - Never run a raw diff, search, index-blob read, or file read that prints matching values. Report only the source (`index` or `working tree`), `file:line`, the secret type, and at most the first 4 non-sensitive identifying characters. If the scanner cannot read and redact a source safely, mark that source as **not assessed** instead of exposing candidate values.
 
 ### Patterns
 
