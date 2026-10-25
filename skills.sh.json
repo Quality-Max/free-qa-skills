@@ -53,8 +53,10 @@
     },
     {
       "title": "Security & Compliance",
-      "description": "Security and compliance review skills for LLM apps, APIs, infrastructure-as-code, and dependency licenses.",
+      "description": "A unified read-only security pack for repositories and websites, advisory applicability, LLM apps, APIs, infrastructure-as-code, and dependency licenses.",
       "skills": [
+        "security-audit",
+        "security-advisory-triage",
         "agentic-app-risk-review",
         "iac-misconfig-scan",
         "api-security-scan",

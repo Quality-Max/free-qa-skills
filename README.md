@@ -11,7 +11,7 @@ No QualityMax account is required. Your chosen coding agent and any external too
 
 Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup or API keys required. The web skills use browser automation such as Playwright MCP; the code-review skills work directly with local repository files and need no MCP at all.
 
-Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, IaC misconfigurations, LLM/agent app risk, or evidence-backed repository audits.
+Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, dependency risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, IaC misconfigurations, LLM/agent app risk, advisory triage, or a unified evidence-backed security audit.
 
 **Skill directories:** [skills.sh](https://www.skills.sh/quality-max/free-qa-skills), [Smithery](https://smithery.ai/console/skills), and [SkillMD](https://skillmd.com/u/ruslan-strazhnyk).
 
@@ -19,7 +19,7 @@ Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibil
 
 ### GitHub Agent Skills
 
-Install all 29 skills with the GitHub CLI:
+Install all 31 skills with the GitHub CLI:
 
 ```bash
 gh skill install Quality-Max/free-qa-skills
@@ -38,13 +38,14 @@ See the [latest GitHub Agent Skills release](https://github.com/Quality-Max/free
 Install from skills.sh with the official skills CLI. This records the install correctly for the public skills directory.
 
 ```bash
-# Install all 29 QA skills
+# Install all 31 QA skills
 npx skills add Quality-Max/free-qa-skills
 
 # Or install one focused skill
 npx skills add Quality-Max/free-qa-skills/accessibility-check
 npx skills add Quality-Max/free-qa-skills/core-web-vitals
 npx skills add Quality-Max/free-qa-skills/diff-risk-review
+npx skills add Quality-Max/free-qa-skills/security-audit
 ```
 
 Then use the skill in your coding agent:
@@ -53,13 +54,14 @@ Then use the skill in your coding agent:
 /accessibility-check https://mysite.com
 /core-web-vitals https://mysite.com
 /diff-risk-review
+/security-audit
 ```
 
 Manual copying still works for local development, but `npx skills add` is the recommended install path because it keeps the skills visible on [skills.sh](https://www.skills.sh/).
 
 ## Skills
 
-29 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
+31 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
 
 ### Web quality (browser automation)
 
@@ -106,19 +108,27 @@ Manual copying still works for local development, but `npx skills add` is the re
 | **script-quality-review** | Generated tests whose green run is a skip, a status-only 4xx, a missed case, an unknown route or selector, or a write with no undo | `npx skills add Quality-Max/free-qa-skills/script-quality-review` |
 | **flaky-selector-scan** | Brittle UI locators (nth-child, absolute XPath, generated classes) → stable role/data-test suggestions | `npx skills add Quality-Max/free-qa-skills/flaky-selector-scan` |
 
-### Security & compliance (local repository — no MCP)
+### Security & compliance (repository + optional browser automation)
 
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
+| **security-audit** | Unified quick, repository, web, full, or advisory security review with deduplicated evidence and explicit coverage gaps | `npx skills add Quality-Max/free-qa-skills/security-audit` |
+| **security-advisory-triage** | CVEs and security claims — authoritative affected/fixed versions, real asset identity, prerequisites, exposure vs. compromise | `npx skills add Quality-Max/free-qa-skills/security-advisory-triage` |
 | **agentic-app-risk-review** | LLM/agent apps — prompt injection, unsafe tool calls, excessive agency, PII/secret leakage (OWASP-LLM-style) | `npx skills add Quality-Max/free-qa-skills/agentic-app-risk-review` |
 | **iac-misconfig-scan** | Dockerfiles, Compose, Terraform, GitHub Actions — root containers, world-writable files, unpinned actions, hardcoded secrets | `npx skills add Quality-Max/free-qa-skills/iac-misconfig-scan` |
 | **api-security-scan** | REST / OpenAPI — missing auth, broken object-level authorization (IDOR/BOLA), no rate limiting, verbose errors | `npx skills add Quality-Max/free-qa-skills/api-security-scan` |
 | **license-compliance-scan** | Dependency licenses vs. your project's — copyleft conflicts, AGPL, unknown/unlicensed packages | `npx skills add Quality-Max/free-qa-skills/license-compliance-scan` |
 
+## Security Pack
+
+Start with `/security-audit` when you want one security report or are unsure which focused check applies. It selects a quick, repository, web, full, or advisory profile and coordinates the relevant focused skills without changing the target.
+
+The pack covers repository failure paths, changed code, secrets, dependencies, APIs, infrastructure-as-code, agentic applications, HTTP headers, mixed content, browser privacy, and advisory applicability. `/security-advisory-triage` handles CVEs and security posts separately: it verifies the exact installed version and documented prerequisites against primary sources before calling an asset vulnerable, and keeps exposure distinct from evidence of compromise.
+
 ## Requirements
 
 - An AI coding agent supported by the [skills CLI](https://skills.sh/)
-- A browser-automation integration such as Playwright MCP — only for the web-quality and performance skills. The repository-review skills need no MCP.
+- A browser-automation integration such as Playwright MCP — only for web and performance checks. Advisory triage needs current web access to public authoritative sources; repository-only checks need no MCP.
 
 ## How It Works
 
