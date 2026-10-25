@@ -41,7 +41,7 @@ Establish what will actually run, then separate verified vulnerability exposure 
 
 4. **Check verified advisories safely.** Prefer an existing local advisory database. For unresolved high-priority public packages, research only the exact public package coordinate and version against maintainer/vendor advisories and authoritative ecosystem databases. Do not include the repository, organization, private registry, or full dependency graph in external requests.
 
-   Package-manager audit commands can transmit dependency descriptions or coordinates to a registry or vulnerability service. Do not run them merely because they are installed. Use them only when the user has explicitly authorized that disclosure and document the destination and submitted data. Otherwise, perform bounded public-coordinate lookups or mark status **not assessed**.
+   Package-manager audit commands can transmit dependency descriptions or coordinates to a registry or vulnerability service. Do not run networked package-manager audits. Use an offline auditor only when its lack of network requests is verified, perform bounded lookups of exact public package coordinates and versions, or mark status **not assessed**.
 
 5. **Check runtime and toolchain support.** Compare declared and deployed runtime evidence across version files, manifests, container tags, CI configuration, and platform configuration. Flag:
 
