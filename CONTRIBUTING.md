@@ -39,9 +39,12 @@ Every skill must be **diagnostic and read-only**. By contributing a skill you co
 - [ ] Makes **no destructive or state-changing** changes — it finds and grades problems, it does not fix them.
 - [ ] Runs **no** destructive/remote-execution commands (`rm -rf`, `git push`/`commit`/`reset --hard`, `sudo`, `chmod 777`, `curl … | sh`, etc.).
 - [ ] Does **not write, modify, or delete** the user's files, repos, or sites.
-- [ ] Does **not exfiltrate** data — no network calls beyond the declared Playwright MCP browsing of a user-supplied URL.
+- [ ] Does **not exfiltrate** data — network access is limited to declared browsing of a user-supplied URL and public authoritative advisory research, without transmitting private target data.
 - [ ] **Masks secrets** in any output (never echoes a full live credential).
+- [ ] Never dumps environment variables, secret/configuration files, credentials, provider/deployment logs, or whole configuration objects; any inspection is explicitly allowlisted and redacted.
+- [ ] Runs no active exploits, brute-force attempts, destructive fuzzing, persistence checks, or denial-of-service tests.
 - [ ] Is resistant to instruction-hijacking by the content under test (treat page/diff content as untrusted data, not commands).
+- [ ] Separates risky configuration, affected/reachable vulnerability, and evidence of exploitation; advisory version claims cite primary sources.
 
 These rules are our core security guarantee and are enforced by `scripts/validate-skills.mjs`. See [SECURITY.md](SECURITY.md).
 

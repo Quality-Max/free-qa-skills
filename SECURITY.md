@@ -8,8 +8,12 @@ Every skill in this repository must be **diagnostic and read-only**. A skill mus
 
 - run destructive or state-changing commands (no `rm -rf`, `git push`, `git commit`, `git reset --hard`, `sudo`, `chmod 777`, piping remote content into a shell, etc.);
 - write, modify, or delete the user's code, files, repositories, or sites (skills find and grade problems — they do not fix them);
-- exfiltrate data — no sending repository contents, secrets, or scan results to any network destination beyond the explicitly declared Playwright MCP browsing of a user-supplied URL;
-- echo live secrets in full (secret-handling skills must mask matches).
+- exfiltrate data — no sending repository contents, secrets, or scan results to any network destination. Network access is limited to declared browsing of a user-supplied URL and public authoritative sources required for advisory research, without transmitting private target data;
+- echo live secrets in full (secret-handling skills must mask matches);
+- dump environment variables, secret/configuration files, credentials, provider or deployment logs, or whole configuration objects — inspect only explicitly allowlisted non-sensitive fields and report presence, type, status, or a fully redacted value;
+- run active exploits, brute-force attempts, destructive fuzzing, persistence checks, or denial-of-service tests.
+
+Security findings must distinguish a risky configuration, an affected and reachable vulnerability, and evidence of exploitation. Advisory claims and affected/fixed version ranges require a primary vendor or maintainer source; social posts and news reports are discovery leads, not proof.
 
 This contract is **enforced in CI** by `scripts/validate-skills.mjs` (see [CONTRIBUTING.md](CONTRIBUTING.md)). A change that violates it is a security defect.
 

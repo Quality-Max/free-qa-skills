@@ -14,5 +14,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Validate skills (structure + read-only security contract)
+      - name: Validate skills (structure + catalog + read-only security contract)
         run: node scripts/validate-skills.mjs
