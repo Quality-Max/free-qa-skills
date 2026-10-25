@@ -24,6 +24,8 @@ Coordinate the repository's focused security skills into one read-only review. S
 - "Give this release a security gate"
 - "Audit this app and website"
 - "Which security checks should I run?"
+- "Check the latest exploited CVEs against this project"
+- "Audit this Railway deployment's exposure"
 
 ## Workflow
 
@@ -36,6 +38,8 @@ Coordinate the repository's focused security skills into one read-only review. S
    | Web | Reviewing a user-supplied URL | Security headers, mixed content, cookies and trackers |
    | Full | The user asks for comprehensive repository and website coverage | All applicable repository and web checks |
    | Advisory | The request centers on a CVE, bulletin, exploit claim, or security post | Security advisory triage |
+   | Threat watch | The request asks for new, latest, or recently exploited vulnerabilities | Exploited-vulnerability watch correlated to local inventory |
+   | Railway | The request centers on Railway deployment exposure | Railway exposure audit plus applicable repository and web checks |
 
    When the request is ambiguous, use **Repository** for a local codebase and **Web** for a URL. State the selected profile and target scope.
 
@@ -60,11 +64,13 @@ Coordinate the repository's focused security skills into one read-only review. S
    | Vulnerable, unpinned, or abandoned packages | `dependency-audit` |
    | REST/OpenAPI authorization and input boundaries | `api-security-scan` |
    | Docker, Compose, Terraform, or CI configuration | `iac-misconfig-scan` |
+   | Railway domains, TCP proxies, and private-network boundaries | `railway-exposure-audit` |
    | LLM or agent trust boundaries | `agentic-app-risk-review` |
    | HTTP response protections | `security-headers-check` |
    | HTTP resources on HTTPS pages | `mixed-content-scan` |
    | Browser cookies, trackers, and consent behavior | `cookie-privacy-scan` |
    | CVE, vendor bulletin, exploit, or social-media claim | `security-advisory-triage` |
+   | New or recently exploited vulnerabilities across the inventory | `exploited-vulnerability-watch` |
 
    Run license compliance only when the user asks for it. If a companion skill or required tool is unavailable, record that check as **not assessed** with the reason. Do not replace it with an invented result.
 
