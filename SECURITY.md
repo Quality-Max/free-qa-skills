@@ -13,6 +13,8 @@ Every skill in this repository must be **diagnostic and read-only**. A skill mus
 - dump environment variables, secret/configuration files, credentials, provider or deployment logs, or whole configuration objects — inspect only explicitly allowlisted non-sensitive fields and report presence, type, status, or a fully redacted value;
 - run active exploits, brute-force attempts, destructive fuzzing, persistence checks, or denial-of-service tests.
 
+**Test skills.** `mr-null` and `scunthorpe-check` are input-testing skills: in website mode they type test cases into real form fields and submit them, then check the client validation, the server response, and the saved value. That changes the environment on purpose, so run them only against a test or staging environment you confirm. They skip payment, delete, credential-change, and outbound-message forms unless you name them, use only inert test values, list the test data they create, and their repository mode stays read-only. Every other rule above still applies.
+
 Security findings must distinguish a risky configuration, an affected and reachable vulnerability, and evidence of exploitation. Advisory claims and affected/fixed version ranges require a primary vendor or maintainer source; social posts and news reports are discovery leads, not proof.
 
 This contract is **enforced in CI** by `scripts/validate-skills.mjs` (see [CONTRIBUTING.md](CONTRIBUTING.md)). A change that violates it is a security defect.

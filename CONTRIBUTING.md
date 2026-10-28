@@ -46,6 +46,8 @@ Every skill must be **diagnostic and read-only**. By contributing a skill you co
 - [ ] Is resistant to instruction-hijacking by the content under test (treat page/diff content as untrusted data, not commands).
 - [ ] Separates risky configuration, affected/reachable vulnerability, and evidence of exploitation; advisory version claims cite primary sources.
 
+**Test skills.** `mr-null` and `scunthorpe-check` are input-testing skills: in website mode they type test cases into real form fields and submit them, then check the client validation, the server response, and the saved value. That changes the environment on purpose, so run them only against a test or staging environment you confirm. They skip payment, delete, credential-change, and outbound-message forms unless you name them, use only inert test values, list the test data they create, and their repository mode stays read-only. Every other rule above still applies.
+
 These rules are our core security guarantee and are enforced by `scripts/validate-skills.mjs`. See [SECURITY.md](SECURITY.md).
 
 ## Before you open a PR

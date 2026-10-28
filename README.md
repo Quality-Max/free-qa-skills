@@ -63,7 +63,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 ## Skills
 
-36 diagnostic skills across six areas. All are read-only — they find problems and grade them, they don't change your code or site.
+36 diagnostic skills across six areas. They find problems and grade them, they don't change your code or site. The two naughty-string test skills submit test cases to live forms, so point them at a test or staging environment.
 
 ### Web quality (browser automation)
 
@@ -112,7 +112,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 ### Naughty strings (browser automation or local repository)
 
-Inspired by the [Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings). Every other form check asks "does it accept garbage?" — these also ask "does it reject real people?"
+Inspired by the [Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings). Every other form check asks "does it accept garbage?" — these also ask "does it reject real people?" `mr-null` and `scunthorpe-check` are test skills: in website mode they type each case into the real form, submit it, and check the client, the server, and the saved value, so run them against a test or staging environment.
 
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
@@ -158,7 +158,7 @@ Open [QualityMax MCP on Smithery](https://smithery.ai/servers/qualitymax/quality
 
 ## Security & contributing
 
-Every skill is **diagnostic and read-only** — it finds and grades problems, it never changes your code or site, and it doesn't exfiltrate data. This read-only contract is enforced in CI by [`scripts/validate-skills.mjs`](scripts/validate-skills.mjs).
+Every skill is **diagnostic** — it finds and grades problems, it never changes your code, and it doesn't exfiltrate data. All skills are read-only except the two naughty-string test skills, which submit test cases to the forms of the test environment you point them at (see [SECURITY.md](SECURITY.md)). This read-only contract is enforced in CI by [`scripts/validate-skills.mjs`](scripts/validate-skills.mjs).
 
 - Report a vulnerability: see [SECURITY.md](SECURITY.md).
 - Add or improve a skill: see [CONTRIBUTING.md](CONTRIBUTING.md) (run `node scripts/validate-skills.mjs` before opening a PR).
