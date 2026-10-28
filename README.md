@@ -11,7 +11,7 @@ No QualityMax account is required. Your chosen coding agent and any external too
 
 Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup or API keys required. The web skills use browser automation such as Playwright MCP; the code-review skills work directly with local repository files and need no MCP at all.
 
-Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, multi-ecosystem dependency and runtime risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, Railway exposure, IaC misconfigurations, LLM/agent app risk, exploited-CVE monitoring, advisory triage, or a unified evidence-backed security audit.
+Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, multi-ecosystem dependency and runtime risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, Railway exposure, IaC misconfigurations, LLM/agent app risk, naughty-string handling, wrongly rejected names and emails, invisible Unicode (Trojan Source), exploited-CVE monitoring, advisory triage, or a unified evidence-backed security audit.
 
 **Skill directories:** [skills.sh](https://www.skills.sh/quality-max/free-qa-skills), [Smithery](https://smithery.ai/console/skills), and [SkillMD](https://skillmd.com/u/ruslan-strazhnyk).
 
@@ -19,7 +19,7 @@ Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibil
 
 ### GitHub Agent Skills
 
-Install all 33 skills with the GitHub CLI:
+Install all 36 skills with the GitHub CLI:
 
 ```bash
 gh skill install Quality-Max/free-qa-skills
@@ -38,7 +38,7 @@ See the [latest GitHub Agent Skills release](https://github.com/Quality-Max/free
 Install from skills.sh with the official skills CLI. This records the install correctly for the public skills directory.
 
 ```bash
-# Install all 33 QA skills
+# Install all 36 QA skills
 npx skills add Quality-Max/free-qa-skills
 
 # Or install one focused skill
@@ -63,7 +63,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 ## Skills
 
-33 diagnostic skills across five areas. All are read-only — they find problems and grade them, they don't change your code or site.
+36 diagnostic skills across six areas. They find problems and grade them, they don't change your code or site. The two naughty-string test skills submit test cases to live forms, so point them at a test or staging environment.
 
 ### Web quality (browser automation)
 
@@ -110,6 +110,16 @@ Manual copying still works for local development, but `npx skills add` is the re
 | **script-quality-review** | Generated tests whose green run is a skip, a status-only 4xx, a missed case, an unknown route or selector, or a write with no undo | `npx skills add Quality-Max/free-qa-skills/script-quality-review` |
 | **flaky-selector-scan** | Brittle UI locators (nth-child, absolute XPath, generated classes) → stable role/data-test suggestions | `npx skills add Quality-Max/free-qa-skills/flaky-selector-scan` |
 
+### Naughty strings (browser automation or local repository)
+
+Inspired by the [Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings). Every other form check asks "does it accept garbage?" — these also ask "does it reject real people?" `mr-null` and `scunthorpe-check` are test skills: in website mode they type each case into the real form, submit it, and check the client, the server, and the saved value, so run them against a test or staging environment.
+
+| Skill | What It Checks | Install |
+|-------|---------------|---------|
+| **mr-null** | Literal `null`/`undefined`/`None`/`__proto__`/`NO` treated as missing or as a keyword, `1E02`/`0x10`/`-0` silently coerced, big IDs losing precision, "Hello, undefined" leaks | `npx skills add Quality-Max/free-qa-skills/mr-null` |
+| **scunthorpe-check** | Real people rejected: O'Brien, José, 李, mononyms, `a+tag@` emails, foreign phones/postcodes, passphrases, profanity filters blocking Scunthorpe | `npx skills add Quality-Max/free-qa-skills/scunthorpe-check` |
+| **invisible-ink** | Trojan Source bidi controls, homoglyph identifiers, zero-width and filler characters, hidden tag-character text in prompts and agent files, terminal escapes | `npx skills add Quality-Max/free-qa-skills/invisible-ink` |
+
 ### Security & compliance (repository + optional browser automation)
 
 | Skill | What It Checks | Install |
@@ -148,7 +158,7 @@ Open [QualityMax MCP on Smithery](https://smithery.ai/servers/qualitymax/quality
 
 ## Security & contributing
 
-Every skill is **diagnostic and read-only** — it finds and grades problems, it never changes your code or site, and it doesn't exfiltrate data. This read-only contract is enforced in CI by [`scripts/validate-skills.mjs`](scripts/validate-skills.mjs).
+Every skill is **diagnostic** — it finds and grades problems, it never changes your code, and it doesn't exfiltrate data. All skills are read-only except the two naughty-string test skills, which submit test cases to the forms of the test environment you point them at (see [SECURITY.md](SECURITY.md)). This read-only contract is enforced in CI by [`scripts/validate-skills.mjs`](scripts/validate-skills.mjs).
 
 - Report a vulnerability: see [SECURITY.md](SECURITY.md).
 - Add or improve a skill: see [CONTRIBUTING.md](CONTRIBUTING.md) (run `node scripts/validate-skills.mjs` before opening a PR).

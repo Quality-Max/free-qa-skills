@@ -52,6 +52,15 @@
       ]
     },
     {
+      "title": "Naughty Strings",
+      "description": "Skills inspired by the Big List of Naughty Strings: reserved values and numeric coercion, real names and emails wrongly rejected, and invisible or deceptive Unicode in code and agent files.",
+      "skills": [
+        "mr-null",
+        "scunthorpe-check",
+        "invisible-ink"
+      ]
+    },
+    {
       "title": "Security & Compliance",
       "description": "A unified read-only security pack for repositories and websites, current exploited vulnerabilities, Railway exposure, advisory applicability, LLM apps, APIs, infrastructure-as-code, and dependency licenses.",
       "skills": [
