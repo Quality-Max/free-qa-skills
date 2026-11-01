@@ -4,11 +4,12 @@
   "groupings": [
     {
       "title": "Web Quality",
-      "description": "Browser-based QA skills for auditing user experience, accessibility, links, console errors, SEO, forms, localization, and HTTPS hygiene.",
+      "description": "Browser-based QA skills for auditing user experience, accessibility, links, console errors, SEO, forms, localization, cross-browser behavior, and HTTPS hygiene.",
       "skills": [
         "ui-ux-scan",
         "accessibility-check",
         "responsive-screenshots",
+        "cross-browser-check",
         "broken-link-scan",
         "console-error-scan",
         "seo-check",
@@ -31,10 +32,11 @@
     },
     {
       "title": "Code Review",
-      "description": "Repository review skills for evidence-backed audits, risky diffs, leaked secrets, dependency risk, dead code, complexity hotspots, and weak error handling.",
+      "description": "Repository review skills for evidence-backed audits, risky diffs, API contract drift, leaked secrets, dependency risk, dead code, complexity hotspots, and weak error handling.",
       "skills": [
         "evidence-code-audit",
         "diff-risk-review",
+        "api-contract-drift",
         "secret-scan",
         "dependency-audit",
         "dead-code-scan",
@@ -44,11 +46,14 @@
     },
     {
       "title": "Test Review",
-      "description": "Test-suite review skills for finding weak tests and brittle UI selectors before they fail in CI.",
+      "description": "Test-suite review skills for finding coverage gaps, weak tests, visual regressions, brittle UI selectors, and ineffective CI gates.",
       "skills": [
         "test-quality-review",
+        "test-coverage-gap",
         "script-quality-review",
-        "flaky-selector-scan"
+        "flaky-selector-scan",
+        "visual-regression-review",
+        "ci-test-gate-audit"
       ]
     },
     {
