@@ -11,7 +11,7 @@ No QualityMax account is required. Your chosen coding agent and any external too
 
 Quick QA, accessibility, performance, security, SEO, privacy, and test-review skills for any website or codebase. No signup or API keys required. The web skills use browser automation such as Playwright MCP; the code-review skills work directly with local repository files and need no MCP at all.
 
-Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, console errors, security headers, cookies and trackers, mixed content, multi-ecosystem dependency and runtime risk, leaked secrets, flaky selectors, weak generated tests, dead code, API security, Railway exposure, IaC misconfigurations, LLM/agent app risk, naughty-string handling, wrongly rejected names and emails, invisible Unicode (Trojan Source), exploited-CVE monitoring, advisory triage, or a unified evidence-backed security audit.
+Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibility, broken links, responsive screenshots, cross-browser differences, visual regressions, console errors, security headers, cookies and trackers, mixed content, multi-ecosystem dependency and runtime risk, leaked secrets, flaky selectors, test coverage gaps, weak generated tests, ineffective CI gates, dead code, API contract drift, API security, Railway exposure, IaC misconfigurations, LLM/agent app risk, naughty-string handling, wrongly rejected names and emails, invisible Unicode (Trojan Source), exploited-CVE monitoring, advisory triage, or a unified evidence-backed security audit.
 
 **Skill directories:** [skills.sh](https://www.skills.sh/quality-max/free-qa-skills), [Smithery](https://smithery.ai/console/skills), and [SkillMD](https://skillmd.com/u/ruslan-strazhnyk).
 
@@ -19,7 +19,7 @@ Use these skills when you need a fast audit for Core Web Vitals, WCAG accessibil
 
 ### GitHub Agent Skills
 
-Install all 36 skills with the GitHub CLI:
+Install all 41 skills with the GitHub CLI:
 
 ```bash
 gh skill install Quality-Max/free-qa-skills
@@ -38,7 +38,7 @@ See the [latest GitHub Agent Skills release](https://github.com/Quality-Max/free
 Install from skills.sh with the official skills CLI. This records the install correctly for the public skills directory.
 
 ```bash
-# Install all 36 QA skills
+# Install all 41 QA skills
 npx skills add Quality-Max/free-qa-skills
 
 # Or install one focused skill
@@ -63,7 +63,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 
 ## Skills
 
-36 diagnostic skills across six areas. They find problems and grade them, they don't change your code or site. The two naughty-string test skills submit test cases to live forms, so point them at a test or staging environment.
+41 diagnostic skills across six areas. They find problems and grade them, they don't change your code or site. The two naughty-string test skills submit test cases to live forms, so point them at a test or staging environment.
 
 ### Web quality (browser automation)
 
@@ -72,6 +72,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 | **ui-ux-scan** | Touch targets, font consistency, spacing, empty states, visual hierarchy, UX anti-patterns | `npx skills add Quality-Max/free-qa-skills/ui-ux-scan` |
 | **accessibility-check** | WCAG violations — alt text, headings, keyboard nav, ARIA, contrast | `npx skills add Quality-Max/free-qa-skills/accessibility-check` |
 | **responsive-screenshots** | Screenshot at 5 viewports (mobile → ultrawide), flag layout breaks | `npx skills add Quality-Max/free-qa-skills/responsive-screenshots` |
+| **cross-browser-check** | Compare pages and read-only interactions across available browser engines; report engine-specific failures | `npx skills add Quality-Max/free-qa-skills/cross-browser-check` |
 | **broken-link-scan** | Find 404s, redirect chains, dead links | `npx skills add Quality-Max/free-qa-skills/broken-link-scan` |
 | **console-error-scan** | JS errors, failed network requests, deprecation warnings | `npx skills add Quality-Max/free-qa-skills/console-error-scan` |
 | **seo-check** | Meta tags, Open Graph, structured data, image alts, heading hierarchy | `npx skills add Quality-Max/free-qa-skills/seo-check` |
@@ -96,6 +97,7 @@ Manual copying still works for local development, but `npx skills add` is the re
 |-------|---------------|---------|
 | **evidence-code-audit** | Broad, focused, or incremental audit with traced failure paths, severity/confidence, coverage limits, and fix priorities | `npx skills add Quality-Max/free-qa-skills/evidence-code-audit` |
 | **diff-risk-review** | Reviews `git diff` for correctness/security/performance — severity-ranked with file:line | `npx skills add Quality-Max/free-qa-skills/diff-risk-review` |
+| **api-contract-drift** | Compare OpenAPI operations with route handlers, serializers, and tests for compatibility mismatches | `npx skills add Quality-Max/free-qa-skills/api-contract-drift` |
 | **secret-scan** | Hardcoded API keys, tokens, private keys, connection strings across common providers | `npx skills add Quality-Max/free-qa-skills/secret-scan` |
 | **dependency-audit** | Vulnerable or unsupported packages and runtimes, stale locks, unsafe ranges, and supply-chain risk across Node.js, Python, PHP, Java, Go, Rust, and Ruby | `npx skills add Quality-Max/free-qa-skills/dependency-audit` |
 | **dead-code-scan** | Unused exports, unreferenced files, unreachable branches, unused imports | `npx skills add Quality-Max/free-qa-skills/dead-code-scan` |
@@ -107,8 +109,11 @@ Manual copying still works for local development, but `npx skills add` is the re
 | Skill | What It Checks | Install |
 |-------|---------------|---------|
 | **test-quality-review** | Assertion-free tests, weak assertions, skipped/only tests, over-mocking, missing edge cases | `npx skills add Quality-Max/free-qa-skills/test-quality-review` |
+| **test-coverage-gap** | Find changed or important behavior with no meaningful test assertion | `npx skills add Quality-Max/free-qa-skills/test-coverage-gap` |
 | **script-quality-review** | Generated tests whose green run is a skip, a status-only 4xx, a missed case, an unknown route or selector, or a write with no undo | `npx skills add Quality-Max/free-qa-skills/script-quality-review` |
 | **flaky-selector-scan** | Brittle UI locators (nth-child, absolute XPath, generated classes) → stable role/data-test suggestions | `npx skills add Quality-Max/free-qa-skills/flaky-selector-scan` |
+| **visual-regression-review** | Compare existing baseline and current screenshots; distinguish UI regressions from rendering noise | `npx skills add Quality-Max/free-qa-skills/visual-regression-review` |
+| **ci-test-gate-audit** | Trace CI triggers, conditions, test commands, and required checks to find ineffective gates | `npx skills add Quality-Max/free-qa-skills/ci-test-gate-audit` |
 
 ### Naughty strings (browser automation or local repository)
 
